@@ -98,11 +98,6 @@ class HomePage extends StatelessWidget {
                               children: [
                                 BlocBuilder<AdzanTimeBloc, AdzanTimeState>(
                                   builder: (context, state) {
-                                    // print(timeNowparsing);
-                                    // print(timeNow);
-                                    // context.read<AdzanTimeBloc>().add(
-                                    //     GetAdzanTime(
-                                    //         timeNowparsing, timeAdzan));
                                     if (state is AdzanTimeLoading) {
                                       return const Center(
                                           child: CircularProgressIndicator());

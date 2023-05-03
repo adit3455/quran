@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quran_app/models/export_models.dart';
 import 'package:quran_app/utils/export_utils.dart';
+import 'package:quran_app/widgets/notificationalert_widgets.dart';
 
 import '../repositories/export_repo.dart';
 
@@ -53,72 +54,13 @@ class AllDoaScreen extends StatelessWidget {
                   return ListTile(
                     minVerticalPadding: 15.h,
                     onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Center(
-                              child: Container(
-                                  width: 320.w,
-                                  padding: EdgeInsets.all(8.0.h),
-                                  decoration: BoxDecoration(
-                                      color: AppColors.scafoldBackgroundColor,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      border: Border.all(
-                                          width: 1,
-                                          color:
-                                              AppColors.cardBackgroundColor)),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Center(
-                                          child: Text(
-                                        "${snapshot.data![index].doa}",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleLarge,
-                                      )),
-                                      const SizedBox(height: 20.0),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          SizedBox(
-                                            width: 300.w,
-                                            child: Text(
-                                              "${snapshot.data![index].ayat}",
-                                              textAlign: TextAlign.end,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleLarge,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 15.0),
-                                      Text(
-                                        "${snapshot.data![index].latin}",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium,
-                                      ),
-                                      const SizedBox(height: 10.0),
-                                      Text("${snapshot.data![index].artinya}",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium),
-                                      const SizedBox(height: 20.0),
-                                      Center(
-                                        child: TextButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context),
-                                            child: const Text("Back")),
-                                      )
-                                    ],
-                                  )));
-                        },
-                      );
+                      // doa ayat latin artinya
+                      NotificationAlertsWidget(
+                              title: "${snapshot.data?[index].doa}",
+                              subTitle: "${snapshot.data?[index].ayat}",
+                              content: "${snapshot.data?[index].latin}",
+                              underContent: "${snapshot.data?[index].artinya}")
+                          .showNotificationAlertsDoaWidget(context);
                     },
                     title: Text("${snapshot.data![index].doa}"),
                     leading: Container(

@@ -110,6 +110,76 @@ class SettingScreen extends StatelessWidget {
                     );
                   },
                 ),
+                IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Center(
+                              child: Container(
+                                  width: 320.w,
+                                  padding: EdgeInsets.all(8.0.h),
+                                  decoration: BoxDecoration(
+                                      color: AppColors.scafoldBackgroundColor,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      border: Border.all(
+                                          width: 1,
+                                          color:
+                                              AppColors.cardBackgroundColor)),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Center(
+                                          child: Text(
+                                        "Do'a",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge,
+                                      )),
+                                      const SizedBox(height: 20.0),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          SizedBox(
+                                            width: 300.w,
+                                            child: Text(
+                                              "Ayat",
+                                              textAlign: TextAlign.end,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 15.0),
+                                      Text(
+                                        "Latin",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                      ),
+                                      const SizedBox(height: 10.0),
+                                      Text("Artinya",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium),
+                                      const SizedBox(height: 20.0),
+                                      Center(
+                                        child: TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            child: const Text("Back")),
+                                      )
+                                    ],
+                                  )));
+                        },
+                      );
+                    },
+                    icon: const Icon(Icons.arrow_right))
               ],
             )),
       ),

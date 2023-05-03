@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quran_app/models/adzan_model.dart';
 import 'package:quran_app/utils/export_utils.dart';
+import 'package:quran_app/widgets/notificationalert_widgets.dart';
 
 import '../repositories/export_repo.dart';
 
@@ -54,118 +55,18 @@ class WaktuAdzanScreen extends StatelessWidget {
                     margin: EdgeInsets.symmetric(horizontal: 5.w),
                     child: ListTile(
                       minVerticalPadding: 15.h,
-                      onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return Center(
-                                  child: Container(
-                                      width: 320.w,
-                                      padding: EdgeInsets.all(8.0.h),
-                                      decoration: BoxDecoration(
-                                          color:
-                                              AppColors.scafoldBackgroundColor,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          border: Border.all(
-                                              width: 1,
-                                              color: AppColors
-                                                  .cardBackgroundColor)),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Center(
-                                              child: Text(
-                                            "Tanggal : ${snapshot.data![index].tanggal}",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge,
-                                          )),
-                                          const SizedBox(height: 20.0),
-                                          const SizedBox(height: 15.0),
-                                          Container(
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 10.0),
-                                              child: Text(
-                                                "Waktu Imsyak : ${snapshot.data![index].imsyak}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              )),
-                                          Container(
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 10.0),
-                                              child: Text(
-                                                "Waktu Shubuh : ${snapshot.data![index].shubuh}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              )),
-                                          Container(
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 10.0),
-                                              child: Text(
-                                                "Waktu Dhuha : ${snapshot.data![index].dhuha}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              )),
-                                          Container(
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 10.0),
-                                              child: Text(
-                                                "Waktu Dzuhur : ${snapshot.data![index].dzuhur}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              )),
-                                          Container(
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 10.0),
-                                              child: Text(
-                                                "Waktu Ashr : ${snapshot.data![index].ashr}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              )),
-                                          Container(
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 10.0),
-                                              child: Text(
-                                                "Waktu Maghrib : ${snapshot.data![index].magrib}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              )),
-                                          Container(
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 10.0),
-                                              child: Text(
-                                                "Waktu Isya : ${snapshot.data![index].isya}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              )),
-                                          const SizedBox(height: 20.0),
-                                          Center(
-                                            child: TextButton(
-                                                onPressed: () =>
-                                                    Navigator.pop(context),
-                                                child: const Text("Back")),
-                                          )
-                                        ],
-                                      )));
-                            });
-                      },
+                      onTap: () => NotificationAlertsWidget(
+                              title:
+                                  "Tanggal : ${snapshot.data?[index].tanggal}")
+                          .showNotificationAlertsAdzanWidget(
+                              context,
+                              "Waktu Imsyak : ${snapshot.data?[index].imsyak}",
+                              "Waktu Shubuh : ${snapshot.data?[index].shubuh}",
+                              "Waktu Dhuha : ${snapshot.data?[index].dhuha}",
+                              "Waktu Dzuhur : ${snapshot.data?[index].dzuhur}",
+                              "Waktu Ashr : ${snapshot.data?[index].ashr}",
+                              "Waktu Maghrib : ${snapshot.data?[index].magrib}",
+                              "Waktu Isya ${snapshot.data?[index].isya}"),
                       title: Text("Tanggal : ${snapshot.data![index].tanggal}"),
                       tileColor: snapshot.data![index].tanggal == timeAdzan
                           ? Colors.white
