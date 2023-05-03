@@ -24,10 +24,10 @@ class DziarahScreen extends StatelessWidget {
             pinned: true,
             actions: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(context, '/bookmarks'),
                   icon: const Icon(Icons.bookmark, color: Colors.white)),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(context, '/setting'),
                   icon: const Icon(Icons.settings, color: Colors.white)),
             ],
           ),
@@ -157,7 +157,22 @@ class DziarahScreen extends StatelessWidget {
                     ]),
               );
             },
-          ))
+          )),
+          SliverToBoxAdapter(
+            child: Container(
+              margin:
+                  const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.cardBackgroundColor),
+                  onPressed: () => Navigator.pushNamed(context, '/yasin'),
+                  child: const Text(
+                    "Baca Yasin?",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  )),
+            ),
+          )
         ],
       ),
     );

@@ -1,4 +1,4 @@
-List<Map<String, dynamic>> listDziarah = [
+const List<Map<String, dynamic>> listDziarah = [
   {
     "judul": "Membaca Salam",
     "ayat": [
@@ -26,103 +26,103 @@ List<Map<String, dynamic>> listDziarah = [
   {
     "judul": "Membaca Surat Al-Fatihah",
     "ayat": [
-      "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-      "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
-      "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
-      "مَٰلِكِ يَوْمِ ٱلدِّينِ",
-      "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
-      "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
-      "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ",
+      "١. بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "٢. ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ",
+      "٣. ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
+      "٤. مَٰلِكِ يَوْمِ ٱلدِّينِ",
+      "٥. إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+      "٦. ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ",
+      "٧. صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ",
     ],
     "latin": [
-      "bismillāhir-raḥmānir-raḥīm",
-      "al-ḥamdu lillāhi rabbil-‘ālamīn",
-      "ar-raḥmānir-raḥīm",
-      "māliki yaumid-dīn",
-      "iyyāka na’budu wa iyyāka nasta’īn",
-      "ihdinaṣ-ṣirāṭal-mustaqīm",
-      "ṣirāṭallażīna an’amta ‘alaihim gairil-magḍụbi ‘alaihim wa laḍ-ḍāllīn"
+      "1. bismillāhir-raḥmānir-raḥīm",
+      "2. al-ḥamdu lillāhi rabbil-‘ālamīn",
+      "3. ar-raḥmānir-raḥīm",
+      "4. māliki yaumid-dīn",
+      "5. iyyāka na’budu wa iyyāka nasta’īn",
+      "6. ihdinaṣ-ṣirāṭal-mustaqīm",
+      "7. ṣirāṭallażīna an’amta ‘alaihim gairil-magḍụbi ‘alaihim wa laḍ-ḍāllīn"
     ],
     "arti": [
-      "Dengan menyebut nama Allah Yang Maha Pengasih lagi Maha Penyayang.",
-      "Segala puji bagi Allah, Tuhan semesta alam.",
-      "Maha Pemurah lagi Maha Penyayang.",
-      "Yang menguasai di Hari Pembalasan.",
-      "Hanya Engkaulah yang kami sembah, dan hanya kepada Engkaulah kami meminta pertolongan.",
-      "Tunjukilah kami jalan yang lurus.",
-      "(yaitu) Jalan orang-orang yang telah Engkau beri nikmat kepada mereka; bukan (jalan) mereka yang dimurkai dan bukan (pula jalan) mereka yang sesat."
+      "1. Dengan menyebut nama Allah Yang Maha Pengasih lagi Maha Penyayang.",
+      "2. Segala puji bagi Allah, Tuhan semesta alam.",
+      "3. Maha Pemurah lagi Maha Penyayang.",
+      "4. Yang menguasai di Hari Pembalasan.",
+      "5. Hanya Engkaulah yang kami sembah, dan hanya kepada Engkaulah kami meminta pertolongan.",
+      "6. Tunjukilah kami jalan yang lurus.",
+      "7. (yaitu) Jalan orang-orang yang telah Engkau beri nikmat kepada mereka; bukan (jalan) mereka yang dimurkai dan bukan (pula jalan) mereka yang sesat."
     ]
   },
   {
     "judul": "Membaca Surat Al-Ikhlas",
     "ayat": [
-      "قُلْ هُوَ ٱللَّهُ أَحَدٌ",
-      "ٱللَّهُ ٱلصَّمَدُ",
-      "لَمْ يَلِدْوَلَمْ يُولَدْ",
-      "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ",
+      "١. قُلْ هُوَ ٱللَّهُ أَحَدٌ",
+      "٢. ٱللَّهُ ٱلصَّمَدُ",
+      "٣. لَمْ يَلِدْوَلَمْ يُولَدْ",
+      "٤. وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ",
     ],
     "latin": [
-      "qul huwallāhu aḥad",
-      "allāhuṣ-ṣamad",
-      "lam yalid wa lam yụlad",
-      "wa lam yakul lahụ kufuwan aḥad"
+      "1. qul huwallāhu aḥad",
+      "2. allāhuṣ-ṣamad",
+      "3. lam yalid wa lam yụlad",
+      "4. wa lam yakul lahụ kufuwan aḥad"
     ],
     "arti": [
-      "Katakanlah: “Dialah Allah, Yang Maha Esa.",
-      "Allah adalah Tuhan yang bergantung kepada-Nya segala sesuatu.",
-      "Dia tiada beranak dan tidak pula diperanakkan.",
-      "dan tidak ada seorangpun yang setara dengan Dia"
+      "1. Katakanlah: “Dialah Allah, Yang Maha Esa.",
+      "2. Allah adalah Tuhan yang bergantung kepada-Nya segala sesuatu.",
+      "3. Dia tiada beranak dan tidak pula diperanakkan.",
+      "4. dan tidak ada seorangpun yang setara dengan Dia"
     ]
   },
   {
     "judul": "Membaca Surat Al-Falaq",
     "ayat": [
-      "قُلْ اَعُوْذُ بِرَبِّ الْفَلَقِۙ",
-      "مِنْ شَرِّ مَا خَلَقَۙ"
-          "وَمِنْ شَرِّ غَاسِقٍ اِذَا وَقَبَۙ",
-      "وَمِنْ شَرِّ النَّفّٰثٰتِ فِى الْعُقَدِۙ",
-      "وَمِنْ شَرِّ حَاسِدٍ اِذَا حَسَدَ"
+      "١. قُلْ اَعُوْذُ بِرَبِّ الْفَلَقِۙ",
+      "٢. مِنْ شَرِّ مَا خَلَقَۙ",
+      "٣. وَمِنْ شَرِّ غَاسِقٍ اِذَا وَقَبَۙ",
+      "٤. وَمِنْ شَرِّ النَّفّٰثٰتِ فِى الْعُقَدِۙ",
+      "٥. وَمِنْ شَرِّ حَاسِدٍ اِذَا حَسَدَ"
     ],
     "latin": [
-      "Qul a’u birabbil-falaq",
-      "Min syarri ma khalaq",
-      "Wa min syarri gāsiqin iżā waqab",
-      "Wa min syarrin-naffāṡāti fil-‘uqad",
-      "wa min syarri ḥāsidin iżā ḥasad"
+      "1. Qul a’u birabbil-falaq",
+      "2. Min syarri ma khalaq",
+      "3. Wa min syarri gāsiqin iżā waqab",
+      "4. Wa min syarrin-naffāṡāti fil-‘uqad",
+      "5. wa min syarri ḥāsidin iżā ḥasad"
     ],
     "arti": [
-      "Katakanlah, “Aku berlindung kepada Tuhan yang menguasai subuh (fajar).",
-      "dari kejahatan (makhluk yang) Dia ciptakan",
-      "dari kejahatan malam apabila telah gelap gulita",
-      "dan dari kejahatan (perempuan-perempuan) penyihir yang meniup pada buhul-buhul (talinya)",
-      "dan dari kejahatan orang yang dengki apabila dia dengki."
+      "1. Katakanlah, “Aku berlindung kepada Tuhan yang menguasai subuh (fajar).",
+      "2. dari kejahatan (makhluk yang) Dia ciptakan",
+      "3. dari kejahatan malam apabila telah gelap gulita",
+      "4. dan dari kejahatan (perempuan-perempuan) penyihir yang meniup pada buhul-buhul (talinya)",
+      "5. dan dari kejahatan orang yang dengki apabila dia dengki."
     ]
   },
   {
     "judul": "Membaca Surat An-Nas",
     "ayat": [
-      "قُلْ اَعُوْذُ بِرَبِّ النَّاسِ",
-      "مَلِكِ النَّاسِۙ",
-      "اِلٰهِ النَّاسِۙ",
-      "مِنۡ شَرِّ الۡوَسۡوَاسِ  ۙ الۡخَـنَّاسِ",
-      "الَّذِىۡ يُوَسۡوِسُ فِىۡ صُدُوۡرِ النَّاسِۙ",
-      "مِنَ الۡجِنَّةِ وَالنَّاسِ"
+      "١. قُلْ اَعُوْذُ بِرَبِّ النَّاسِ",
+      "٢. مَلِكِ النَّاسِۙ",
+      "٣. اِلٰهِ النَّاسِۙ",
+      "٤. مِنۡ شَرِّ الۡوَسۡوَاسِ  ۙ الۡخَـنَّاسِ",
+      "٥. الَّذِىۡ يُوَسۡوِسُ فِىۡ صُدُوۡرِ النَّاسِۙ",
+      "٦. مِنَ الۡجِنَّةِ وَالنَّاسِ"
     ],
     "latin": [
-      "Qul a'uzu birabbin naas",
-      "Malikin naas",
-      "Ilaahin naas",
-      "Min sharril was waasil khannaas",
-      "Al lazii yuwas wisu fii suduurin naas",
-      "Minal jinnati wan naas"
+      "1. Qul a'uzu birabbin naas",
+      "2. Malikin naas",
+      "3. Ilaahin naas",
+      "4. Min sharril was waasil khannaas",
+      "5. Al lazii yuwas wisu fii suduurin naas",
+      "6. Minal jinnati wan naas"
     ],
     "arti": [
-      "Katakanlah, Aku berlindung kepada Tuhannya manusia",
-      "Raja manusia",
-      "sembahan manusia",
-      "dari kejahatan (bisikan) setan yang bersembunyi",
-      "yang membisikkan (kejahatan) ke dalam dada manusia,",
-      "dari (golongan) jin dan manusia."
+      "1. Katakanlah, Aku berlindung kepada Tuhannya manusia",
+      "2. Raja manusia",
+      "3. sembahan manusia",
+      "4. dari kejahatan (bisikan) setan yang bersembunyi",
+      "5. yang membisikkan (kejahatan) ke dalam dada manusia,",
+      "6. dari (golongan) jin dan manusia."
     ]
   },
   {

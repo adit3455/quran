@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quran_app/screens/dziarah_screen.dart';
 import 'package:quran_app/screens/export_screens.dart';
 import 'package:quran_app/utils/export_utils.dart';
 

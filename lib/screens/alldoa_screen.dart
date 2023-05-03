@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quran_app/models/export_models.dart';
-import 'package:quran_app/repositories/base_repo.dart';
 import 'package:quran_app/utils/export_utils.dart';
+
+import '../repositories/export_repo.dart';
 
 class AllDoaScreen extends StatelessWidget {
   const AllDoaScreen({super.key});
@@ -22,8 +23,13 @@ class AllDoaScreen extends StatelessWidget {
                 backgroundColor: AppColors.scafoldBackgroundColor,
                 actions: [
                   IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.bookmark)),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, '/bookmarks'),
+                      icon: const Icon(Icons.bookmark)),
+                  IconButton(
+                      onPressed: () =>
+                          Navigator.pushNamed(context, '/searchSurah'),
+                      icon: const Icon(Icons.search)),
                 ],
               ),
               SliverPersistentHeader(

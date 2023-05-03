@@ -1,30 +1,42 @@
-class QuranSurahDetailModel {
-  int? nomor;
-  String? nama;
-  String? namaLatin;
-  int? jumlahAyat;
-  String? tempatTurun;
-  String? arti;
-  String? deskripsi;
-  String? audio;
-  bool? status;
-  List<Ayat>? ayat;
-  SuratSelanjutnya? suratSelanjutnya;
-  SuratSelanjutnya? suratSebelumnya;
+import 'package:hive_flutter/hive_flutter.dart';
 
-  QuranSurahDetailModel(
-      {this.nomor,
-      this.nama,
-      this.namaLatin,
-      this.jumlahAyat,
-      this.tempatTurun,
-      this.arti,
-      this.deskripsi,
-      this.audio,
-      this.status,
-      this.ayat,
-      this.suratSelanjutnya,
-      this.suratSebelumnya});
+part 'quransurahdetail_model.g.dart';
+
+@HiveType(typeId: 0)
+class QuranSurahDetailModel extends HiveObject {
+  @HiveField(0)
+  int? nomor;
+  @HiveField(1)
+  String? nama;
+  @HiveField(2)
+  String? namaLatin;
+  @HiveField(3)
+  int? jumlahAyat;
+  @HiveField(4)
+  String? tempatTurun;
+  @HiveField(5)
+  String? arti;
+  @HiveField(6)
+  String? deskripsi;
+  @HiveField(7)
+  String? audio;
+  @HiveField(8)
+  bool? status;
+  @HiveField(9)
+  List<Ayat>? ayat;
+
+  QuranSurahDetailModel({
+    this.nomor,
+    this.nama,
+    this.namaLatin,
+    this.jumlahAyat,
+    this.tempatTurun,
+    this.arti,
+    this.deskripsi,
+    this.audio,
+    this.status,
+    this.ayat,
+  });
 
   QuranSurahDetailModel.fromJson(Map<String, dynamic> json) {
     nomor = json['nomor'];
@@ -42,8 +54,6 @@ class QuranSurahDetailModel {
         ayat!.add(Ayat.fromJson(v));
       });
     }
-    suratSelanjutnya = SuratSelanjutnya.fromJson(json['surat_selanjutnya']);
-    suratSebelumnya = SuratSelanjutnya.fromJson(json['surat_sebelumnya']);
   }
 
   Map<String, dynamic> toJson() {
@@ -60,22 +70,24 @@ class QuranSurahDetailModel {
     if (ayat != null) {
       data['ayat'] = ayat!.map((v) => v.toJson()).toList();
     }
-    if (suratSelanjutnya != null) {
-      data['surat_selanjutnya'] = suratSelanjutnya!.toJson();
-    }
-    if (suratSebelumnya != null) {
-      data['surat_sebelumnya'] = suratSebelumnya!.toJson();
-    }
+
     return data;
   }
 }
 
-class Ayat {
+@HiveType(typeId: 1)
+class Ayat extends HiveObject {
+  @HiveField(0)
   int? id;
+  @HiveField(1)
   int? surah;
+  @HiveField(2)
   int? nomor;
+  @HiveField(3)
   String? ar;
+  @HiveField(4)
   String? tr;
+  @HiveField(5)
   String? idn;
 
   Ayat({this.id, this.surah, this.nomor, this.ar, this.tr, this.idn});
@@ -97,55 +109,6 @@ class Ayat {
     data['ar'] = ar;
     data['tr'] = tr;
     data['idn'] = idn;
-    return data;
-  }
-}
-
-class SuratSelanjutnya {
-  int? id;
-  int? nomor;
-  String? nama;
-  String? namaLatin;
-  int? jumlahAyat;
-  String? tempatTurun;
-  String? arti;
-  String? deskripsi;
-  String? audio;
-
-  SuratSelanjutnya(
-      {this.id,
-      this.nomor,
-      this.nama,
-      this.namaLatin,
-      this.jumlahAyat,
-      this.tempatTurun,
-      this.arti,
-      this.deskripsi,
-      this.audio});
-
-  SuratSelanjutnya.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    nomor = json['nomor'];
-    nama = json['nama'];
-    namaLatin = json['nama_latin'];
-    jumlahAyat = json['jumlah_ayat'];
-    tempatTurun = json['tempat_turun'];
-    arti = json['arti'];
-    deskripsi = json['deskripsi'];
-    audio = json['audio'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['nomor'] = nomor;
-    data['nama'] = nama;
-    data['nama_latin'] = namaLatin;
-    data['jumlah_ayat'] = jumlahAyat;
-    data['tempat_turun'] = tempatTurun;
-    data['arti'] = arti;
-    data['deskripsi'] = deskripsi;
-    data['audio'] = audio;
     return data;
   }
 }

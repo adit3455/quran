@@ -25,7 +25,7 @@ class FeedDetailScreen extends StatelessWidget {
           ),
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () => Navigator.pushNamed(context, '/setting'),
                 icon: const Icon(
                   Icons.settings,
                   color: Colors.white,

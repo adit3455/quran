@@ -53,7 +53,8 @@ class Articles {
     title = json['title'];
     description = json['description'];
     url = json['url'];
-    urlToImage = json['urlToImage'];
+    urlToImage = json['urlToImage'] ??
+        "https://www.charlotteathleticclub.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png";
     publishedAt = json['publishedAt'];
     content = json['content'];
   }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quran_app/models/export_models.dart';
-import 'package:quran_app/repositories/base_repo.dart';
 import 'package:quran_app/screens/export_screens.dart';
 import 'package:quran_app/utils/export_utils.dart';
+
+import '../repositories/export_repo.dart';
 
 class AllFeedScreen extends StatelessWidget {
   const AllFeedScreen({super.key});
@@ -23,12 +24,17 @@ class AllFeedScreen extends StatelessWidget {
                 backgroundColor: AppColors.scafoldBackgroundColor,
                 actions: [
                   IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.bookmark)),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, '/bookmarks'),
+                      icon: const Icon(Icons.bookmark)),
+                  IconButton(
+                      onPressed: () =>
+                          Navigator.pushNamed(context, '/searchSurah'),
+                      icon: const Icon(Icons.search)),
                 ],
               ),
               SliverPersistentHeader(
-                  pinned: true, delegate: SliverHeaderAllDoaWidget()),
+                  pinned: true, delegate: SliverHeaderAllFeedWidget()),
               SliverToBoxAdapter(
                   child: Padding(
                 padding:
@@ -55,13 +61,11 @@ class AllFeedScreen extends StatelessWidget {
                 (context, index) {
                   return ListTile(
                     minVerticalPadding: 15.h,
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => FeedDetailScreen(
-                                  articles: snapshot.data!.articles![index])));
-                    },
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FeedDetailScreen(
+                                articles: snapshot.data!.articles![index]))),
                     title: Text("${snapshot.data!.articles![index].title}"),
                     subtitle:
                         Text("${snapshot.data!.articles![index].publishedAt}"),
@@ -95,7 +99,7 @@ class AllFeedScreen extends StatelessWidget {
   }
 }
 
-class SliverHeaderAllDoaWidget extends SliverPersistentHeaderDelegate {
+class SliverHeaderAllFeedWidget extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {

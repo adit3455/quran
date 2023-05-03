@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quran_app/repositories/base_repo.dart';
 import 'package:quran_app/utils/export_utils.dart';
 
+import '../repositories/export_repo.dart';
 import 'export_screens.dart';
 
 class AllSurahScreen extends StatelessWidget {
@@ -23,8 +23,14 @@ class AllSurahScreen extends StatelessWidget {
                 backgroundColor: AppColors.scafoldBackgroundColor,
                 actions: [
                   IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.bookmark)),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, '/bookmarks'),
+                      icon: const Icon(Icons.bookmark)),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/searchSurah');
+                      },
+                      icon: const Icon(Icons.search)),
                 ],
               ),
               SliverPersistentHeader(
@@ -56,7 +62,8 @@ class AllSurahScreen extends StatelessWidget {
                                   )));
                     },
                     trailing: IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.list)),
+                        onPressed: () {},
+                        icon: const Icon(Icons.arrow_right, size: 30.0)),
                     title: Text("${snapshot.data![index].namaLatin}"),
                     subtitle: Text("${snapshot.data![index].arti}"),
                     leading: Container(

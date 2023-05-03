@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quran_app/utils/appcolors_utils.dart';
 
 class ThemeUtils {
@@ -10,8 +11,8 @@ class ThemeUtils {
           backgroundColor: AppColors.appbarBackgroundColor),
       scaffoldBackgroundColor: AppColors.scafoldBackgroundColor,
       brightness: Brightness.light,
+      fontFamily: GoogleFonts.roboto().fontFamily,
       iconTheme: const IconThemeData(color: Colors.white),
-      // fontFamily: GoogleFonts.signika().fontFamily,
       primaryColor: AppColors.primaryColor,
       cardTheme: const CardTheme(color: AppColors.cardBackgroundColor));
 }

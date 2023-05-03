@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quran_app/models/export_models.dart';
-import 'package:quran_app/repositories/base_repo.dart';
-import 'package:quran_app/screens/allfeed_screen.dart';
 import 'package:quran_app/utils/export_utils.dart';
 
+import '../blocs/export_blocs.dart';
+import '../repositories/export_repo.dart';
 import '../widgets/export_widgets.dart';
 import 'export_screens.dart';
 
@@ -12,6 +12,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // String timeNow = DateFormat('kk:mm', 'id_ID').format(DateTime.now());
+    // String timeAdzan = DateFormat('y-MM-dd').format(DateTime.now());
+    // final timeNowWithoutSymbol = timeNow.replaceAll(':', '');
+    // final timeNowparsing = int.parse(timeNowWithoutSymbol);
+
     return Scaffold(
         body: FutureBuilder<FeedModel>(
       future: QuranSurah().getFeed(),
@@ -58,7 +63,8 @@ class HomePage extends StatelessWidget {
                                                 color: Colors.white),
                                       ),
                                       Text(
-                                        "Medan, 04 Februari 2023",
+                                        DateFormat("EEEE, d MMMM yyyy", "id_ID")
+                                            .format(DateTime.now()),
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleMedium!
@@ -68,7 +74,8 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () => Navigator.pushNamed(
+                                        context, '/setting'),
                                     icon: const Icon(Icons.settings)),
                               ],
                             ),
@@ -89,35 +96,130 @@ class HomePage extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Padding(
-                                  padding: EdgeInsets.only(top: 15.h),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Maghrib 18:30 WIB",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge!
-                                            .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 20),
-                                      ),
-                                      Text(
-                                        "2:30:10 Menjelang Adzan",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .copyWith(color: Colors.white),
-                                      ),
-                                    ],
-                                  ),
+                                BlocBuilder<AdzanTimeBloc, AdzanTimeState>(
+                                  builder: (context, state) {
+                                    // print(timeNowparsing);
+                                    // print(timeNow);
+                                    // context.read<AdzanTimeBloc>().add(
+                                    //     GetAdzanTime(
+                                    //         timeNowparsing, timeAdzan));
+                                    if (state is AdzanTimeLoading) {
+                                      return const Center(
+                                          child: CircularProgressIndicator());
+                                    }
+                                    if (state is AdzanTimeStarted) {
+                                      String strDigits(int n) =>
+                                          n.toString().padLeft(2, '0');
+
+                                      final hours = strDigits(state
+                                          .adzanTime.inHours
+                                          .remainder(24));
+                                      final minutes = strDigits(state
+                                          .adzanTime.inMinutes
+                                          .remainder(60));
+                                      final seconds = strDigits(state
+                                          .adzanTime.inSeconds
+                                          .remainder(60));
+
+                                      final hourLock = strDigits(state
+                                          .adzanTimeLock.inHours
+                                          .remainder(24));
+                                      final minuteLock = strDigits(state
+                                          .adzanTimeLock.inMinutes
+                                          .remainder(60));
+
+                                      return Padding(
+                                        padding: EdgeInsets.only(top: 15.h),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "${state.adzanName} $hourLock:$minuteLock WIB",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge!
+                                                  .copyWith(
+                                                      color: Colors.white,
+                                                      fontSize: 20),
+                                            ),
+                                            Text(
+                                              "$hours:$minutes:$seconds Menjelang Adzan",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium!
+                                                  .copyWith(
+                                                      color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                    if (state is AdzanTimeChanged) {
+                                      String strDigits(int n) =>
+                                          n.toString().padLeft(2, '0');
+
+                                      final hours = strDigits(state
+                                          .adzanTime.inHours
+                                          .remainder(24));
+                                      final minutes = strDigits(state
+                                          .adzanTime.inMinutes
+                                          .remainder(60));
+                                      final seconds = strDigits(state
+                                          .adzanTime.inSeconds
+                                          .remainder(60));
+
+                                      final hourLock = strDigits(state
+                                          .adzanTimeLock.inHours
+                                          .remainder(24));
+                                      final minuteLock = strDigits(state
+                                          .adzanTimeLock.inMinutes
+                                          .remainder(60));
+
+                                      return Padding(
+                                        padding: EdgeInsets.only(top: 15.h),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "${state.adzanName} $hourLock:$minuteLock WIB",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge!
+                                                  .copyWith(
+                                                      color: Colors.white,
+                                                      fontSize: 20),
+                                            ),
+                                            Text(
+                                              "$hours:$minutes:$seconds Menjelang Adzan",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium!
+                                                  .copyWith(
+                                                      color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                    return Text(
+                                      "Theres Something Wrong",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(color: Colors.white),
+                                    );
+                                  },
                                 ),
-                                CircleAvatar(
-                                  maxRadius: 30.h,
-                                  backgroundImage: const NetworkImage(
-                                      "https://riaupos.co/thumb/2867-13950133625_d490cfefe3_z.jpg"),
+                                InkWell(
+                                  onTap: () =>
+                                      Navigator.pushNamed(context, '/qiblah'),
+                                  child: CircleAvatar(
+                                    maxRadius: 30.h,
+                                    backgroundImage: const NetworkImage(
+                                        "https://riaupos.co/thumb/2867-13950133625_d490cfefe3_z.jpg"),
+                                  ),
                                 )
                               ],
                             ),
@@ -153,11 +255,8 @@ class HomePage extends StatelessWidget {
                         children: [
                           const Text("Feed Untukmu"),
                           TextButton(
-                              onPressed: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const AllFeedScreen())),
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, '/allfeed'),
                               child: const Text("Lihat Semua"))
                         ],
                       ),
