@@ -72,9 +72,9 @@ class SettingScreen extends StatelessWidget {
                   listener: (context, state) {
                     if ((state as NotificationChangerSwitch).notification ==
                         true) {
-                      context
-                          .read<AdzanTimeBloc>()
-                          .add(const NotificationAdzan());
+                      // context
+                      //     .read<AdzanTimeBloc>()
+                      //     .add(const NotificationAdzan());
                     }
                     if (state is NotificationChangerError) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(

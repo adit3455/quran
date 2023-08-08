@@ -15,6 +15,7 @@ void main() async {
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(appDocumentDirectory.path);
   Hive.registerAdapter(AyatAdapter());
+
   await initializeDateFormatting('id_ID').then((value) => runApp(ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
@@ -29,7 +30,9 @@ void main() async {
                 BlocProvider(create: (context) => TextSizeAlquranBloc()),
                 BlocProvider(
                     create: (context) => AdzanTimeBloc(
-                        QuranSurah(), AdzanConfig(), NotificationService())
+                        adzanConfig: AdzanConfig(),
+                        notificationService: NotificationService(),
+                        quranSurah: QuranSurah())
                       ..add(const GetAdzanTime())),
                 BlocProvider(create: (context) => NotificationChangerBloc()),
               ],

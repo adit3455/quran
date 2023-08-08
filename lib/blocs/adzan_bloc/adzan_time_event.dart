@@ -7,6 +7,13 @@ abstract class AdzanTimeEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+class InitAdzanTime extends AdzanTimeEvent {
+  const InitAdzanTime();
+
+  @override
+  List<Object?> get props => [];
+}
+
 class GetAdzanTime extends AdzanTimeEvent {
   const GetAdzanTime();
 
@@ -16,36 +23,16 @@ class GetAdzanTime extends AdzanTimeEvent {
 
 class StartAdzan extends AdzanTimeEvent {
   final Duration duration;
+  final Duration countingTime;
+  final Duration lockDuration;
   final String adzanName;
-  final Duration adzanTimeLock;
-  final bool notification;
 
   const StartAdzan(
       {required this.duration,
-      required this.adzanName,
-      required this.adzanTimeLock,
-      required this.notification});
+      required this.countingTime,
+      required this.lockDuration,
+      required this.adzanName});
 
   @override
-  List<Object?> get props => [duration, adzanName, adzanTimeLock, notification];
-}
-
-class ChangingTimeAdzan extends AdzanTimeEvent {
-  final Duration? duration;
-  final String? adzanName;
-  final Duration? timeNow;
-
-  const ChangingTimeAdzan({this.duration, this.adzanName, this.timeNow});
-
-  @override
-  List<Object?> get props => [duration, adzanName, timeNow];
-}
-
-class NotificationAdzan extends AdzanTimeEvent {
-  final Duration? duration;
-  final String? adzanName;
-
-  const NotificationAdzan({this.duration, this.adzanName});
-  @override
-  List<Object?> get props => [duration, adzanName];
+  List<Object?> get props => [duration, countingTime, lockDuration, adzanName];
 }

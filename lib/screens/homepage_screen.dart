@@ -12,11 +12,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // String timeNow = DateFormat('kk:mm', 'id_ID').format(DateTime.now());
-    // String timeAdzan = DateFormat('y-MM-dd').format(DateTime.now());
-    // final timeNowWithoutSymbol = timeNow.replaceAll(':', '');
-    // final timeNowparsing = int.parse(timeNowWithoutSymbol);
-
     return Scaffold(
         body: FutureBuilder<FeedModel>(
       future: QuranSurah().getFeed(),
@@ -150,54 +145,7 @@ class HomePage extends StatelessWidget {
                                         ),
                                       );
                                     }
-                                    if (state is AdzanTimeChanged) {
-                                      String strDigits(int n) =>
-                                          n.toString().padLeft(2, '0');
 
-                                      final hours = strDigits(state
-                                          .adzanTime.inHours
-                                          .remainder(24));
-                                      final minutes = strDigits(state
-                                          .adzanTime.inMinutes
-                                          .remainder(60));
-                                      final seconds = strDigits(state
-                                          .adzanTime.inSeconds
-                                          .remainder(60));
-
-                                      final hourLock = strDigits(state
-                                          .adzanTimeLock.inHours
-                                          .remainder(24));
-                                      final minuteLock = strDigits(state
-                                          .adzanTimeLock.inMinutes
-                                          .remainder(60));
-
-                                      return Padding(
-                                        padding: EdgeInsets.only(top: 15.h),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "${state.adzanName} $hourLock:$minuteLock WIB",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge!
-                                                  .copyWith(
-                                                      color: Colors.white,
-                                                      fontSize: 20),
-                                            ),
-                                            Text(
-                                              "$hours:$minutes:$seconds Menjelang Adzan",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium!
-                                                  .copyWith(
-                                                      color: Colors.white),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
                                     return Text(
                                       "Theres Something Wrong",
                                       style: Theme.of(context)
@@ -239,6 +187,14 @@ class HomePage extends StatelessWidget {
               SliverPersistentHeader(
                 delegate: SliverHeaderHomePage(),
                 pinned: true,
+              ),
+              SliverToBoxAdapter(
+                child: TextButton(
+                  onPressed: () async {
+                    context.read<AdzanTimeBloc>().add(const GetAdzanTime());
+                  },
+                  child: const Text("Klik Disini"),
+                ),
               ),
               SliverToBoxAdapter(
                 child: Padding(

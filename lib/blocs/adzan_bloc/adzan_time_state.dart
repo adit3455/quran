@@ -4,12 +4,12 @@ abstract class AdzanTimeState extends Equatable {
   const AdzanTimeState();
 
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }
 
 class AdzanTimeLoading extends AdzanTimeState {
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }
 
 class AdzanTimeStarted extends AdzanTimeState {
@@ -20,17 +20,6 @@ class AdzanTimeStarted extends AdzanTimeState {
 
   const AdzanTimeStarted(this.adzanTime, this.adzanName, this.adzanTimeLock,
       {this.notification = true});
-
-  @override
-  List<Object?> get props => [adzanTime, adzanName, adzanTimeLock];
-}
-
-class AdzanTimeChanged extends AdzanTimeState {
-  final Duration adzanTime;
-  final String adzanName;
-  final Duration adzanTimeLock;
-
-  const AdzanTimeChanged(this.adzanTime, this.adzanName, this.adzanTimeLock);
 
   @override
   List<Object> get props => [adzanTime, adzanName, adzanTimeLock];
