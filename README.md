@@ -24,7 +24,7 @@ Include some attractive screenshots of your app to give potential users a visual
 
 ## Features
 
-- Contains All 114 Surah and 30 Juz.
+- Contains All 114 Surah and 30 Juz, and with the translated Indonesian.
 - Beautiful UI for better experience using the app.
 - Bookmarks your verse in the Surah.
 - Searching the Surah that you wanted.
