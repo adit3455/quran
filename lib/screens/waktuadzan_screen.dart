@@ -19,74 +19,77 @@ class WaktuAdzanScreen extends StatelessWidget {
         } else if (snapshot.connectionState == ConnectionState.done) {
           String timeNow = DateFormat('MMMM', 'id_ID').format(DateTime.now());
 
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                expandedHeight: 8.h,
-                backgroundColor: AppColors.scafoldBackgroundColor,
-                actions: [
-                  IconButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/searchSurah'),
-                      icon: const Icon(Icons.search)),
-                ],
-              ),
-              SliverPersistentHeader(
-                  pinned: true, delegate: SliverHeaderWaktuAdzanWidget()),
-              SliverToBoxAdapter(
-                  child: Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
-                child: Text(
-                  "Semua Waktu Adzan di Bulan $timeNow",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(fontWeight: FontWeight.w500),
+          return SafeArea(
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  expandedHeight: 8.h,
+                  backgroundColor: AppColors.scafoldBackgroundColor,
+                  actions: [
+                    IconButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/searchSurah'),
+                        icon: const Icon(Icons.search)),
+                  ],
                 ),
-              )),
-              SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                childCount: snapshot.data!.length,
-                (context, index) {
-                  String timeAdzan =
-                      DateFormat('y-MM-dd').format(DateTime.now());
-                  return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: ListTile(
-                      minVerticalPadding: 15.h,
-                      onTap: () => NotificationAlertsWidget(
-                              title:
-                                  "Tanggal : ${snapshot.data?[index].tanggal}")
-                          .showNotificationAlertsAdzanWidget(
-                              context,
-                              "Waktu Imsyak : ${snapshot.data?[index].imsyak}",
-                              "Waktu Shubuh : ${snapshot.data?[index].shubuh}",
-                              "Waktu Dhuha : ${snapshot.data?[index].dhuha}",
-                              "Waktu Dzuhur : ${snapshot.data?[index].dzuhur}",
-                              "Waktu Ashr : ${snapshot.data?[index].ashr}",
-                              "Waktu Maghrib : ${snapshot.data?[index].magrib}",
-                              "Waktu Isya ${snapshot.data?[index].isya}"),
-                      title: Text("Tanggal : ${snapshot.data![index].tanggal}"),
-                      tileColor: snapshot.data![index].tanggal == timeAdzan
-                          ? Colors.white
-                          : AppColors.scafoldBackgroundColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0)),
-                      horizontalTitleGap: 3.0,
-                      leading: Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 10.0.h, horizontal: 17.0.w),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0.h),
-                            color: AppColors.appbarBackgroundColor),
-                        child: Text("${index + 1}"),
+                SliverPersistentHeader(
+                    pinned: true, delegate: SliverHeaderWaktuAdzanWidget()),
+                SliverToBoxAdapter(
+                    child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
+                  child: Text(
+                    "Semua Waktu Adzan di Bulan $timeNow",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(fontWeight: FontWeight.w500),
+                  ),
+                )),
+                SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                  childCount: snapshot.data!.length,
+                  (context, index) {
+                    String timeAdzan =
+                        DateFormat('y-MM-dd').format(DateTime.now());
+                    return Container(
+                      margin: EdgeInsets.symmetric(horizontal: 5.w),
+                      child: ListTile(
+                        minVerticalPadding: 15.h,
+                        onTap: () => NotificationAlertsWidget(
+                                title:
+                                    "Tanggal : ${snapshot.data?[index].tanggal}")
+                            .showNotificationAlertsAdzanWidget(
+                                context,
+                                "Waktu Imsyak : ${snapshot.data?[index].imsyak}",
+                                "Waktu Shubuh : ${snapshot.data?[index].shubuh}",
+                                "Waktu Dhuha : ${snapshot.data?[index].dhuha}",
+                                "Waktu Dzuhur : ${snapshot.data?[index].dzuhur}",
+                                "Waktu Ashr : ${snapshot.data?[index].ashr}",
+                                "Waktu Maghrib : ${snapshot.data?[index].magrib}",
+                                "Waktu Isya ${snapshot.data?[index].isya}"),
+                        title:
+                            Text("Tanggal : ${snapshot.data![index].tanggal}"),
+                        tileColor: snapshot.data![index].tanggal == timeAdzan
+                            ? Colors.white
+                            : AppColors.scafoldBackgroundColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0)),
+                        horizontalTitleGap: 3.0,
+                        leading: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10.0.h, horizontal: 17.0.w),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0.h),
+                              color: AppColors.appbarBackgroundColor),
+                          child: Text("${index + 1}"),
+                        ),
                       ),
-                    ),
-                  );
-                },
-              ))
-            ],
+                    );
+                  },
+                ))
+              ],
+            ),
           );
         } else {
           return const Text("Theres Something Wrong");

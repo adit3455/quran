@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "quran_app" "\0"
+            VALUE "FileDescription", "Al-Qur'an App" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "quran_app" "\0"
+            VALUE "InternalName", "Al-Qur'an App" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "quran_app.exe" "\0"
-            VALUE "ProductName", "quran_app" "\0"
+            VALUE "ProductName", "Al-Qur'an App" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

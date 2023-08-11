@@ -33,7 +33,7 @@ void main() async {
                         adzanConfig: AdzanConfig(),
                         notificationService: NotificationService(),
                         quranSurah: QuranSurah())
-                      ..add(const GetAdzanTime())),
+                      ..add(const InitAdzanTime())),
                 BlocProvider(create: (context) => NotificationChangerBloc()),
               ],
               child: MaterialApp(

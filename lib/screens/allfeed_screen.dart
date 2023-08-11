@@ -17,79 +17,82 @@ class AllFeedScreen extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.connectionState == ConnectionState.done) {
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                expandedHeight: 8.h,
-                backgroundColor: AppColors.scafoldBackgroundColor,
-                actions: [
-                  IconButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/bookmarks'),
-                      icon: const Icon(Icons.bookmark)),
-                  IconButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/searchSurah'),
-                      icon: const Icon(Icons.search)),
-                ],
-              ),
-              SliverPersistentHeader(
-                  pinned: true, delegate: SliverHeaderAllFeedWidget()),
-              SliverToBoxAdapter(
-                  child: Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("All Feeds",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(fontWeight: FontWeight.w500)),
-                    Text("Menampilkan ${snapshot.data!.articles!.length} Feed",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(fontWeight: FontWeight.w500)),
+          return SafeArea(
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  expandedHeight: 8.h,
+                  backgroundColor: AppColors.scafoldBackgroundColor,
+                  actions: [
+                    IconButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/bookmarks'),
+                        icon: const Icon(Icons.bookmark)),
+                    IconButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/searchSurah'),
+                        icon: const Icon(Icons.search)),
                   ],
                 ),
-              )),
-              SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                childCount: snapshot.data!.articles!.length,
-                (context, index) {
-                  return ListTile(
-                    minVerticalPadding: 15.h,
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FeedDetailScreen(
-                                articles: snapshot.data!.articles![index]))),
-                    title: Text("${snapshot.data!.articles![index].title}"),
-                    subtitle:
-                        Text("${snapshot.data!.articles![index].publishedAt}"),
-                    trailing: ClipRRect(
-                      borderRadius: BorderRadius.circular(5.0),
-                      child: Image.network(
-                        "${snapshot.data!.articles![index].urlToImage}",
-                        fit: BoxFit.cover,
-                        width: 100.w,
-                        height: 150.h,
+                SliverPersistentHeader(
+                    pinned: true, delegate: SliverHeaderAllFeedWidget()),
+                SliverToBoxAdapter(
+                    child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("All Feeds",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(fontWeight: FontWeight.w500)),
+                      Text(
+                          "Menampilkan ${snapshot.data!.articles!.length} Feed",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(fontWeight: FontWeight.w500)),
+                    ],
+                  ),
+                )),
+                SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                  childCount: snapshot.data!.articles!.length,
+                  (context, index) {
+                    return ListTile(
+                      minVerticalPadding: 15.h,
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FeedDetailScreen(
+                                  articles: snapshot.data!.articles![index]))),
+                      title: Text("${snapshot.data!.articles![index].title}"),
+                      subtitle: Text(
+                          "${snapshot.data!.articles![index].publishedAt}"),
+                      trailing: ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: Image.network(
+                          "${snapshot.data!.articles![index].urlToImage}",
+                          fit: BoxFit.cover,
+                          width: 100.w,
+                          height: 150.h,
+                        ),
                       ),
-                    ),
-                    leading: Container(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10.0.h, horizontal: 17.0.w),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0.h),
-                          color: AppColors.appbarBackgroundColor),
-                      child: Text("${index + 1}"),
-                    ),
-                  );
-                },
-              ))
-            ],
+                      leading: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.0.h, horizontal: 17.0.w),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0.h),
+                            color: AppColors.appbarBackgroundColor),
+                        child: Text("${index + 1}"),
+                      ),
+                    );
+                  },
+                ))
+              ],
+            ),
           );
         } else {
           return const Text("Theres Something Wrong");

@@ -37,7 +37,7 @@ class NotificationAlertsWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           SizedBox(
-                            width: 300.w,
+                            width: 280.w,
                             child: Text(
                               "$subTitle",
                               textAlign: TextAlign.end,

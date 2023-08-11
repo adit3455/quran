@@ -189,14 +189,6 @@ class HomePage extends StatelessWidget {
                 pinned: true,
               ),
               SliverToBoxAdapter(
-                child: TextButton(
-                  onPressed: () async {
-                    context.read<AdzanTimeBloc>().add(const GetAdzanTime());
-                  },
-                  child: const Text("Klik Disini"),
-                ),
-              ),
-              SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
@@ -217,7 +209,7 @@ class HomePage extends StatelessWidget {
               ),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
-                  childCount: 7,
+                  childCount: 3,
                   (context, index) {
                     return ListTile(
                       onTap: () {

@@ -17,64 +17,67 @@ class AllDoaScreen extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.connectionState == ConnectionState.done) {
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                expandedHeight: 8.h,
-                backgroundColor: AppColors.scafoldBackgroundColor,
-                actions: [
-                  IconButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/bookmarks'),
-                      icon: const Icon(Icons.bookmark)),
-                  IconButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/searchSurah'),
-                      icon: const Icon(Icons.search)),
-                ],
-              ),
-              SliverPersistentHeader(
-                  pinned: true, delegate: SliverHeaderAllDoaWidget()),
-              SliverToBoxAdapter(
-                  child: Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
-                child: Text(
-                  "Semua Do'a",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(fontWeight: FontWeight.w500),
+          return SafeArea(
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  expandedHeight: 8.h,
+                  backgroundColor: AppColors.scafoldBackgroundColor,
+                  actions: [
+                    IconButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/bookmarks'),
+                        icon: const Icon(Icons.bookmark)),
+                    IconButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/searchSurah'),
+                        icon: const Icon(Icons.search)),
+                  ],
                 ),
-              )),
-              SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                childCount: snapshot.data!.length,
-                (context, index) {
-                  return ListTile(
-                    minVerticalPadding: 15.h,
-                    onTap: () {
-                      // doa ayat latin artinya
-                      NotificationAlertsWidget(
-                              title: "${snapshot.data?[index].doa}",
-                              subTitle: "${snapshot.data?[index].ayat}",
-                              content: "${snapshot.data?[index].latin}",
-                              underContent: "${snapshot.data?[index].artinya}")
-                          .showNotificationAlertsDoaWidget(context);
-                    },
-                    title: Text("${snapshot.data![index].doa}"),
-                    leading: Container(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10.0.h, horizontal: 17.0.w),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0.h),
-                          color: AppColors.appbarBackgroundColor),
-                      child: Text("${snapshot.data![index].id}"),
-                    ),
-                  );
-                },
-              ))
-            ],
+                SliverPersistentHeader(
+                    pinned: true, delegate: SliverHeaderAllDoaWidget()),
+                SliverToBoxAdapter(
+                    child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
+                  child: Text(
+                    "Semua Do'a",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(fontWeight: FontWeight.w500),
+                  ),
+                )),
+                SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                  childCount: snapshot.data!.length,
+                  (context, index) {
+                    return ListTile(
+                      minVerticalPadding: 15.h,
+                      onTap: () {
+                        // doa ayat latin artinya
+                        NotificationAlertsWidget(
+                                title: "${snapshot.data?[index].doa}",
+                                subTitle: "${snapshot.data?[index].ayat}",
+                                content: "${snapshot.data?[index].latin}",
+                                underContent:
+                                    "${snapshot.data?[index].artinya}")
+                            .showNotificationAlertsDoaWidget(context);
+                      },
+                      title: Text("${snapshot.data![index].doa}"),
+                      leading: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.0.h, horizontal: 17.0.w),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0.h),
+                            color: AppColors.appbarBackgroundColor),
+                        child: Text("${snapshot.data![index].id}"),
+                      ),
+                    );
+                  },
+                ))
+              ],
+            ),
           );
         } else {
           return const Text("Theres Something Wrong");

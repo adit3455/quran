@@ -16,68 +16,71 @@ class AllSurahScreen extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.connectionState == ConnectionState.done) {
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                expandedHeight: 8.h,
-                backgroundColor: AppColors.scafoldBackgroundColor,
-                actions: [
-                  IconButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, '/bookmarks'),
-                      icon: const Icon(Icons.bookmark)),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/searchSurah');
-                      },
-                      icon: const Icon(Icons.search)),
-                ],
-              ),
-              SliverPersistentHeader(
-                  pinned: true, delegate: SliverHeaderAllSurahWidget()),
-              SliverToBoxAdapter(
-                  child: Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
-                child: Text(
-                  "Semua Surah",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(fontWeight: FontWeight.w500),
+          return SafeArea(
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  expandedHeight: 8.h,
+                  backgroundColor: AppColors.scafoldBackgroundColor,
+                  actions: [
+                    IconButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, '/bookmarks'),
+                        icon: const Icon(Icons.bookmark)),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/searchSurah');
+                        },
+                        icon: const Icon(Icons.search)),
+                  ],
                 ),
-              )),
-              SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                childCount: snapshot.data!.length,
-                (context, index) {
-                  return ListTile(
-                    minVerticalPadding: 15.h,
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SurahDetailScreen(
-                                    index: snapshot.data![index].nomor!.toInt(),
-                                  )));
-                    },
-                    trailing: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.arrow_right, size: 30.0)),
-                    title: Text("${snapshot.data![index].namaLatin}"),
-                    subtitle: Text("${snapshot.data![index].arti}"),
-                    leading: Container(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 10.0.h, horizontal: 17.0.w),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0.h),
-                          color: AppColors.appbarBackgroundColor),
-                      child: Text("${snapshot.data![index].nomor}"),
-                    ),
-                  );
-                },
-              ))
-            ],
+                SliverPersistentHeader(
+                    pinned: true, delegate: SliverHeaderAllSurahWidget()),
+                SliverToBoxAdapter(
+                    child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 8.0.w, vertical: 5.0.h),
+                  child: Text(
+                    "Semua Surah",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(fontWeight: FontWeight.w500),
+                  ),
+                )),
+                SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                  childCount: snapshot.data!.length,
+                  (context, index) {
+                    return ListTile(
+                      minVerticalPadding: 15.h,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SurahDetailScreen(
+                                      index:
+                                          snapshot.data![index].nomor!.toInt(),
+                                    )));
+                      },
+                      trailing: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.arrow_right, size: 30.0)),
+                      title: Text("${snapshot.data![index].namaLatin}"),
+                      subtitle: Text("${snapshot.data![index].arti}"),
+                      leading: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.0.h, horizontal: 17.0.w),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0.h),
+                            color: AppColors.appbarBackgroundColor),
+                        child: Text("${snapshot.data![index].nomor}"),
+                      ),
+                    );
+                  },
+                ))
+              ],
+            ),
           );
         } else {
           return const Center(child: Text("Theres Something Wrong"));
